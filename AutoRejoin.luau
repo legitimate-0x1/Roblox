@@ -1,6 +1,5 @@
 -- Made by Sovf!
 
-local game = game
 local Cloneref = cloneref or function(...) return ... end
 
 local GuiService = Cloneref(game:GetService("GuiService"))
