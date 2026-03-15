@@ -275,8 +275,6 @@ CloseButton.MouseButton1Click:Connect(function()
 	GUI:Destroy()
 end)
 
-print(getfflag("S2PhysicsSenderRate"), getfflag("DataSenderRate"))
-
 game:GetService("UserInputService").InputBegan:Connect(function(Inp, RBXTF)
 	if not RBXTF and not IsMessageBlank(LagSwitchKey.Text) and Inp.KeyCode == Enum.KeyCode[string.upper(LagSwitchKey.Text)] then
 		LagSwitchF()
