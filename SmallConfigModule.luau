@@ -2,6 +2,8 @@
 
 local Module = {}
 
+local isfile, readfile, writefile, select, pcall = isfile, readfile, writefile, select, pcall
+
 Module.Config = function(FileName, FileContent)
 	FileContent = FileContent or ""
 
