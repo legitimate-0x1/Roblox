@@ -1,7 +1,7 @@
 -- Made by Sovf!
 
 local Module = {}
-local isfile, readfile, writefile, makefolder, delfolder, select, pcall, tostring, string_split, math_random = isfile, readfile, writefile, makefolder, delfolder, select, pcall, ipairs, tostring, string.split, math.random
+local isfile, readfile, writefile, makefolder, delfolder, select, pcall, tostring, string_split, math_random = isfile, readfile, writefile, makefolder, delfolder, select, pcall, tostring, string.split, math.random
 
 if makefolder ~= nil then
 	local FolderPath = tostring(math_random()).."/"..tostring(math_random())
