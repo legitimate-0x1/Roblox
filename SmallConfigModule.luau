@@ -1,11 +1,21 @@
 -- Made by Sovf!
 
 local Module = {}
-local isfile, readfile, writefile, makefolder, select, pcall, ipairs, string_split = isfile, readfile, writefile, makefolder, select, pcall, ipairs, string.split
+local isfile, readfile, writefile, makefolder, delfolder, select, pcall, ipairs, tostring, string_split, math_random = isfile, readfile, writefile, makefolder, delfolder, select, pcall, ipairs, tostring, string.split, math.random
+
+if makefolder ~= nil then
+	local FolderPath = tostring(math_random()).."/"..tostring(math_random())
+	
+	Module.MultiFoldersSupported = pcall(makefolder, FolderPath)
+	
+	if delfolder ~= nil then
+		delfolder(FolderPath)
+	end
+end
 
 Module.MakeFolder = function(FolderName, Debug, CustomMultiFolders)
 	if makefolder ~= nil then
-		if CustomMultiFolders == true then
+		if CustomMultiFolders == true or not Module.MultiFoldersSupported then
 			local SeperatedFolderName = string_split(FolderName, "/")
 			local CurrentSeperatedFolderName = SeperatedFolderName[1]
 			
@@ -41,4 +51,4 @@ Module.WriteFile = function(FileName, FileContent)
 	return FileContent
 end
 
-return Module
+return table.freeze(Module)
