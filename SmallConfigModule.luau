@@ -1,13 +1,44 @@
 -- Made by Sovf!
 
 local Module = {}
+local isfile, readfile, writefile, makefolder, select, pcall, ipairs, string_split = isfile, readfile, writefile, makefolder, select, pcall, ipairs, string.split
 
-local isfile, readfile, writefile, select, pcall = isfile, readfile, writefile, select, pcall
+Module.MakeFolder = function(FolderName, Debug, CustomMultiFolders)
+	if makefolder ~= nil then
+		if CustomMultiFolders == true then
+			local SeperatedFolderName = string_split(FolderName, "/")
+			local CurrentSeperatedFolderName = SeperatedFolderName[1]
+			
+			for Index = 2, #SeperatedFolderName do
+				CurrentSeperatedFolderName ..= "/"..SeperatedFolderName[Index]
+				makefolder(CurrentSeperatedFolderName)
+			end
+		else
+			makefolder(FolderName)
+		end
+				
+		return Debug == true and isfolder ~= nil and isfolder(FolderName)
+	end
+end
 
-Module.Config = function(FileName, FileContent)
+Module.ReadFile = function(FileName, FileContent)
 	FileContent = FileContent or ""
 
 	return isfile and isfile(FileName) and readfile ~= nil and select(2, pcall(readfile, FileName)) or writefile ~= nil and writefile(FileName, FileContent) == nil and FileContent
+end
+
+Module.CompareFileContents = function(FileName, FileContent)
+	return Module.ReadFile(FileName) == FileContent
+end
+
+Module.WriteFile = function(FileName, FileContent)
+	FileContent = FileContent or ""
+
+	if writefile ~= nil then
+		pcall(writefile, FileName, FileContent)
+	end
+	
+	return FileContent
 end
 
 return Module
