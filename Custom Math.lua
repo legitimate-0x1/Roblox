@@ -12,5 +12,3 @@ end
 
 math = table.freeze(Math_Clone)
 Math_Clone = nil
-
-warn("Welcome man!")
